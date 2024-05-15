@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+</head>
+<body>
+<div id="chat-messages">
+    <!-- 채팅 메시지가 표시될 영역 -->
+</div>
+<input type="text" id="message-input" placeholder="Type your message here...">
+<button onclick="sendMessage()">Send</button>
+
+<script>
+    function sendMessage() {
+        var messageInput = document.getElementById('message-input');
+        var message = messageInput.value;
+
+        // 서버로 메시지 전송하는 코드 작성
+        // 예시: WebSocket을 사용할 경우
+        // websocket.send(message);
+
+        // 메시지 입력창 초기화
+        messageInput.value = '';
+    }
+</script>
+</body>
+</html>

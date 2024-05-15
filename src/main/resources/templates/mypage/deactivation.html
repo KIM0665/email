@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/layout}">
+<head>
+    <link th:href="@{/css/mypage/mypage_basic.css}" rel="stylesheet">
+</head>
+<div layout:fragment="content">
+    <div class="blog-content">
+        <div class="main-conten">
+            <div class="sidebar">
+                <div class="profile">
+                    <img src="../img/profile.png" alt="" />
+                    <h3>ADIOS</h3>
+                </div>
+                <ul>
+                    <li>
+                        <a href="mypage_profile.html" class="active">
+                            <span class="item">프로필 변경</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mypage_profile_correction.html">
+                            <span class="item">정보 변경</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mypage_member_secession.html">
+                            <span class="item">휴먼 계정</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mypage_Dormant_member_deactivation.html">
+                            <span class="item">회원 탈퇴</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="main">
+            <form action="" class="profil-form3">
+                <h3>휴면 계정 관리</h3>
+                <div class="text_area_div">
+            <textarea
+                    name="Human_account"
+                    id=""
+                    cols="60"
+                    rows="16"
+                    class="text_area"
+                    readonly="readonly"
+                    disabled="disabled"
+            >
+                                                     휴면 계정 약관 안내
+1. Lorem ipsum, dolor sit amet consectetur adipisicing elit.Molestias, facilis voluptas illum incidunt laborum voluptates minima.
+2. Loremipsum, dolor sit amet consectetur adipisicing elit. Molestias, facilis voluptas.
+3. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, facilis voluptas edit ab possimus? Alias quas ipsam sit earumadipisicing elit. Molestias, facilis voluptas edit ab possimus? Alias quas ipsam sit earumadipisicing elit. Molestias, facilis voluptas edit ab possimus? Alias quas ipsam sit earum.
+4. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, facilis voluptas edit ab possimus? Alias quas ipsam sit earum.
+5.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, facilisvoluptas edit ab possimus? Alias quas ipsam sit earum.
+6. 1년이상 접속을 하지않을 경우휴먼계정으로 계정이 전환이 됩니다. 현재 유저님의 계정은 휴먼계정 상태로 계정 이용 시 활성화가 필요한 부분입니다.
+7.상기 내용을 확인하였으며, 계정 활성화 시 아래 내용을 확인하여 진행하시기 바랍니다.
+                    </textarea
+                    >
+                </div>
+
+                <div class="phone_div">
+                    <label for="tel" class="text_box3">휴대폰 인증</label>
+                    <input
+                            type="tel"
+                            name=""
+                            id="Result"
+                            style="width: 50px"
+                            required="required"
+                    />
+                    <span class="hyphen">-</span>
+                    <input type="tel" name="" id="tel" style="width: 50px" />
+                    <span class="hyphen">-</span>
+                    <input type="tel" name="" id="tel" style="width: 50px" />
+                    <div class="phone_scroll">
+                        <select
+                                name="phone_first_num"
+                                id="phone_first_num"
+                                style="width: 60px; height: 25px"
+                        >
+                            <option value="1">010</option>
+                            <option value="2">011</option>
+                            <option value="3">016</option>
+                            <option value="4">018</option>
+                            <option value="5">070</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" style="width: 100px" class="button1">
+                    인증하기
+                </button>
+                <div class="bottom_div">
+                    <label for="pwd" class="text_box3">계정 활성화</label>
+                    <input
+                            class="bottom_text_box"
+                            type="text"
+                            name=""
+                            id=""
+                            style="width: 200px; height: 20px"
+                            placeholder="'계정사용' 입력바랍니다."
+                    />
+                </div>
+                <div class="bottom_div2">
+                    <button type="submit" style="width: 100px">계정 활성화</button>
+                    <button type="reset" style="width: 100px">취소</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

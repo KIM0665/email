@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/layout}">
+<head>
+    <link th:href="@{/community/css/mypage_basic.css}" rel="stylesheet">
+</head>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            $('#searchBtn').on("click", function (e) {
+                e.preventDefault();
+                page(0);
+            })
+        });
+
+        function page(page) {
+            const searchCriteria = $("#searchCriteria").val(); // 검색 기준
+            const searchQuery = $("input[name='searchQuery']").val(); // 검색어
+
+            let searchCreatedBy = "";
+            let searchCommunityContent = "";
+            let searchName = "";
+
+            // 검색 기준에 따라 검색 필드 설정
+            if (searchCriteria === "작성자") {
+                searchCreatedBy = "createdBy";
+            } else if (searchCriteria === "내용") {
+                searchCommunityContent = "communityContent";
+            } else if (searchCriteria === "제목") {
+                searchName = "searchName";
+            }
+
+
+
+            // 페이지 이동
+            location.href = "/community/board/list/" + page
+                + "?searchCreatedBy=" + searchCreatedBy
+                + "&searchCommunityContent=" + searchCommunityContent
+                + "&searchName=" + searchName + "&searchQuery="
+                + searchQuery;
+        }
+        /*function page(page) {
+            const searchCreatedBy = $("#searchCreatedBy").val();     // 작성자로 검색
+            const searchCommunityContent = $("#searchCommunityContent").val();    // 내용으로 검색
+            const searchQuery = $("#searchQuery").val();             // 검색어
+            const searchName = $("#searchName").val();  // 제목으로 검색
+
+            location.href="/community/board/list/"+page+"?searchCreatedBy="+searchCreatedBy+"&searchCommunityContent="
+                +searchCommunityContent+"&searchName="+searchName+"&searchQuery="+searchQuery;
+        }*/
+
+
+
+
+
+    </script>
+</th:block>
+<div layout:fragment="content">
+    <div class="blog-content">
+        <form th:action="@{'/community/board/list/' +${list.number}}" role="form" method="get"
+              th:object="${list}">
+        <div class="main-conten">
+
+
+            <div class="sidebar">
+                <div class="profile">
+                    <h3>ADIOS</h3>
+
+                </div>
+                <ul>
+                    <li>
+                        <a href="community_freenotice_board.html" class="active">
+                            <span class="item">자유게시판</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="community_notice_board.html">
+
+                            <span class="item">공지사항</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+
+                            <span class="item">이달의 공연 소식</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+
+                            <span class="item">공연 후기 공유</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+
+                            <span class="item">문화 공연 관련 정보 제공</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+
+                            <span class="item">공연 후속 프로그램 소개</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+
+                            <span class="item">공연 랭킹판/추천</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+
+                            <span class="item">공연 정보 요청</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div id="gesipan">
+            <div id="Menutop">
+                <div id="M-top">
+                    <h1>자유게시판</h1>
+                    <p><b>자유롭게 글을 쓸 수 있는게시판입니다.</b></p>
+
+                        <div class="form-inline justify-content-center" th:object="${boardSearchDTO}">
+                            <select class="form-control" style="width: auto" id="searchCriteria" th:field="${boardSearchDTO.searchCriteria}">
+                                <option value="작성자">작성자</option>
+                                <option value="내용">내용</option>
+                                <option value="제목">제목</option>
+                            </select>
+
+                            <input th:field="*{searchQuery}" type="text" class="form-control" placeholder="검색어를 입력해주세요">
+                            <button id="searchBtn" type="submit" class="btn btn-primary">검색</button>
+                        </div>
+
+                </div>
+            </div>
+            <div id="middlecontent">
+                <table id="table1">
+                    <tr>
+                        <td >번호</td>
+                        <td  class="holy">제목</td>
+                        <td >글쓴이</td>
+                        <td >작성일</td>
+                        <td >조회수</td>
+                    </tr>
+                    <tr>
+                    <tr th:each="boardCommunity : ${list}">
+                        <td th:text="${boardCommunity.id}"></td>
+                        <td><a th:text="${boardCommunity.communityTitle}"
+                               th:href="@{/community/board/view/{id}(id=${boardCommunity.id})}" ></a></td>
+                        <td th:text="${boardCommunity.createdBy}"></td>
+                        <td th:text="${#temporals.format(boardCommunity.regTime,'yyyy-MM-dd')}"></td>
+                        <td th:text="${boardCommunity.communityViewCount}"></td>
+                </table>
+            </div>
+            <div class="pagination" th:if="${maxPage != 0}" th:with="start=${(list.number/maxPage)*maxPage + 1},
+    end=(${(list.totalPages == 0) ? 1 : (start + (maxPage - 1) < list.totalPages ? start + (maxPage - 1) : list.totalPages)})">
+                <ul>
+                    <li class="page-item">
+                        <a th:onclick="'javascript:page(0)'"
+                           aria-label='First' class="page-link">
+                            <span aria-hidden='true'>First</span>
+                        </a>
+                    </li>
+                    <li class="page-item" th:classappend="${list.first}?'disabled'">
+                        <a th:onclick="'javascript:page(' + ${list.number - 1} + ')'"
+                           aria-label='Previous' class="page-link">
+                            <span aria-hidden='true'>Previous</span>
+                        </a>
+                    </li>
+
+                    <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}"
+                        th:classappend="${list.number eq page - 1}?'active':''">
+                        <a th:onclick="'javascript:page(' + ${page - 1} + ')'"
+                           th:inline="text" class="page-link">[[${page}]]</a>
+                    </li>
+                    <li class="page-item" th:classappend="${list.last}?'disabled'">
+                        <a th:onclick="'javascript:page(' + ${list.number + 1} + ')'"
+                           aria-label='Next' class="page-link">
+                            <span aria-hidden='true'>Next</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a th:onclick="'javascript:page('+${list.totalPages -1}+')'"
+                           aria-label='Last' class="page-link">
+                            <span aria-hidden='true'>Last</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <a th:href="@{/community/board/new}" id="newwrite">글쓰기</a>
+
+            </div>
+        </form>
+    </div>
+</div>
+</html>

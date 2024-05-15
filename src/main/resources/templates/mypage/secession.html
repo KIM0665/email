@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <link th:href="@{/css/mypage/mypage_basic.css}" rel="stylesheet">
+    <link th:href="@{/css/mypage/mypage_secssion.css}" rel="stylesheet">
+</head>
+<div layout:fragment="content">
+    <div class="blog-content">
+        <div class="main-conten">
+            <div class="sidebar">
+                <div class="profile">
+                    <img src="" alt="" />
+                    <h3>ADIOS</h3>
+                </div>
+                <<ul>
+                <li>
+                    <a href="/mypage">
+                        <span class="item">정보 변경</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/mypage/passwordmodify" th:if="${!social}">
+                        <span class="item">비밀번호변경</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/mypage/secession">
+                        <span class="item">회원 탈퇴</span>
+                    </a>
+                </li>
+            </ul>
+            </div>
+        </div>
+
+        <!-- 메인 -->
+        <div id="main">
+            <form method="POST" action="/mypage/secession">
+                <h1>회원 탈퇴 약관</h1>
+                <div class="terms">
+                    <h2>제1조 (약관의 목적)</h2>
+                    <p>본 약관은 회원(이하 "회원"이라 함)이 회사가 제공하는 회원 탈퇴 서비스(이하 "서비스"라 함)를 이용함에 있어 회사와 회원의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+                    <h2>제2조 (약관의 효력 및 변경)</h2>
+                    <p>이 약관은 회사의 서비스에 대한 이용약관에 준용되며, 회사는 필요한 경우 이 약관을 변경할 수 있습니다. 변경된 약관은 회사가 운영하는 웹사이트에 공지함으로써 효력을 발생합니다.</p>
+                    <h2>제3조 (회원 탈퇴 절차)</h2>
+                    <p>회원은 회사가 제공하는 회원 탈퇴 서비스를 통해 탈퇴 신청을 할 수 있으며, 탈퇴 절차는 회사의 정책에 따릅니다.</p>
+                    <h2>제4조 (회원 탈퇴 시 유의사항)</h2>
+                    <p>회원 탈퇴 시에는 회원의 개인정보가 영구적으로 삭제되며, 복구가 불가능하니 신중한 결정이 필요합니다. 또한, 탈퇴로 인한 서비스 이용 중단 및 혜택 상실에 대한 책임은 회원 본인에게 있습니다.</p>
+                </div>
+                <div class="btn-container">
+                    <button class="btn" type="submit">동의하고 탈퇴하기</button>
+                </div>
+                <input type="submit" class="submit" value="비밀번호변경"  >
+                <input type="hidden" th:name="${_csrf.parameterName}"
+                       th:value="${_csrf.token}">
+            </form>
+
+
+        </div>
+    </div>
+</div>
+</html>

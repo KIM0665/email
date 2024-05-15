@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/layout}">
+<head>
+    <link th:href="@{/css/mypage/mypage_basic.css}" rel="stylesheet">
+</head>
+<div layout:fragment="content">
+    <div class="blog-content">
+        <div class="main-conten">
+            <div class="sidebar">
+                <div class="profile">
+                    <img src="../img/profile.png" alt="" />
+                    <h3>ADIOS</h3>
+
+                </div>
+                <ul>
+                    <li>
+                        <a href="mypage_profile.html" class="active">
+                            <span class="item">프로필 변경</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mypage_profile_correction.html">
+                            <span class="item">정보 변경</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mypage_member_secession.html">
+                            <span class="item">휴먼 계정</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mypage_Dormant_member_deactivation.html">
+                            <span class="item">회원 탈퇴</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="main">
+            <form action="">
+
+                <div class="top1">
+                    <h3>탈퇴 안내</h3>
+                    <p>회원 탈퇴를 신청하기전에 안내사항을 꼭 확인하세요.</p>
+                    <hr>
+                </div>
+
+                <br><br>
+                <div class="top2">
+                    <p class="top_title">
+                        <span id="title" >회원탈퇴</span>
+                        안내
+                    </p>
+                    <p class="text_page">회원 탈퇴 시 회원님께서 보유하셨던 등급 및 포인트, 커뮤니티 정보이용등은 모두 삭제됩니다<br>
+                        회원 탈퇴 후 재가입시 신규회원으로 가입 처리 되며 탈퇴 전의 회원정보와 등급, 쿠폰, 커뮤니티정보이용 등은 복구뒤지 않습니다.
+                    </p>
+                </div>
+
+                <br><br>
+                <div class="g_sub_title">
+                    포인트 및 등급정보
+                </div>
+                <table class="g_blue_table">
+                    <colgroup>
+                        <col width="140">
+                        <col width="140">
+                        <col width="140">
+                        <col width="140">
+                    </colgroup>
+
+                    <tr>
+                        <th>
+                            포인트</th>
+                        <td>
+                            <a href="#" style="text-decoration: none;">100포인트</a>
+                        </td>
+                        <th>별명</th>
+                        <td>
+                            <a
+                                    href="myFront\project_reference\Myprofil1.html"
+                                    style="text-decoration: none;">별명</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            쿠폰
+                        </th>
+                        <td>
+                            <a href="#" style="text-decoration: none;">
+                                0장</a>
+                        </td>
+                        <th>
+                            이용횟수
+                        </th>
+                        <td>
+                            <a href="#" style="text-decoration: none;">
+                                x번</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            등급
+                        </th>
+                        <td>
+                            준회원
+
+                        </td>
+                        <th>회원 점수</th>
+                        <td>0점</td>
+
+                    </tr>
+
+                </table>
+
+                <p>
+                    메일 수신 및 기타 개인정보 등에 대한 불편으로 회원 탈퇴를 원하신다면, 아래의 방법으로 해결하실수 있습니다.
+                </p>
+
+                <div class="cancel_area">
+
+                    <div class="tb_cell">
+                        <label for="email_cancel">
+                            <input type="checkbox" class="g_checkobx" name="email" id="email_cancel"/>
+                            이메일 수신거부
+                        </label>
+                        <label for="sns_cancel">
+                            <input for="" type="checkbox" class="g_checkobx" name="email" id="sns_cancel">
+                            SNS 수신거부
+                        </label>
+                        <label calss="offer_cancel">
+                            <input for="" type="checkbox" class="g_checkobx" name="email" id="offer_cancel">
+                            정보제공동의 철회
+                        </label>
+
+                    </div>
+                    <div id="bu1">
+                        <div id="bu2">
+                            <input type="submit" value="신청하기" class="bu">
+                            <input type="reset" value="취소" class="bu"></div>
+
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+</html>
